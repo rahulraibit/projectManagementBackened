@@ -5,7 +5,8 @@ let dashboardservice = require('../service/masterspec.js')
 router.get('/get', function (req, res) {
     console.log('reached')
     let l = dashboardservice.getData();
-    if(l || !l.length)
+    console.log(l);
+    if(!l || !l.length)
      {
          dashboardservice.createRecord();
      }
@@ -17,6 +18,12 @@ router.get('/get', function (req, res) {
 router.get('/search', function (req, res) {
     console.log("reache", req.query);
     let data = dashboardservice.getFilteredData(req.query.title);
+    res.send(data);
+});
+
+router.post('/create', function (req, res) {
+    console.log("reache", req.body);
+    let data = dashboardservice.createNewRecord(req.body);
     res.send(data);
 });
 
