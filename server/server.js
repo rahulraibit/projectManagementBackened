@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 
 module.exports = app;
 var server = require('http').createServer(app);
-server.listen(8000, function () {
+server.listen(process.env.PORT || 8000, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Application Listening at http://%s:%s', host, port);
