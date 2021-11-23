@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 let dashboardservice = require('../service/masterspec.js')
+dashboardservice.createRecord();
 
 router.get('/get', function (req, res) {
     let l = dashboardservice.getData();
@@ -36,6 +37,7 @@ router.get('/product/:id', function (req, res) {
 
 router.post('/product/:id/like', function (req, res) {
     let data = dashboardservice.incrementLike(req.params.id);
+    console.log(data)
     res.send(data);
 });
 
